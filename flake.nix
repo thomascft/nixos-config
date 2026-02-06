@@ -63,6 +63,7 @@
           system.stateVersion = "25.11";
         })
         ./systems/gram/disko.nix
+        ./systems/gram/hardware-configuration.nix
       ];
     };
   };
