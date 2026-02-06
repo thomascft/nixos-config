@@ -6,6 +6,9 @@
   inputs.disko.url = "github:nix-community/disko";
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
 
+  inputs.lanzaboote.url = "github:nix-community/lanzaboote";
+  inputs.lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
+
   outputs = inputs @ {self, nixpkgs, ...}:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -61,6 +64,18 @@
           nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
           system.stateVersion = "25.11";
+        })
+        # Secure Boot and TPM Unlocking
+        ({inputs, lib, pkgs, config, ...}:{
+          imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
+          boot.loader.systemd-boot.enable = lib.mkForce false;
+          boot.lanzaboote = {
+            enable = true;
+            pkiBundle = "/var/lib/sbctl";
+          };
+
+
+          boot.initrd.systemd.enable = true;
         })
         ./systems/gram/disko.nix
         ./systems/gram/hardware-configuration.nix
