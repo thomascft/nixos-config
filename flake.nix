@@ -44,6 +44,8 @@
           services.power-profiles-daemon.enable = true;
           services.upower.enable = true;
 
+          services.syncthing.enable = true;
+
           programs.niri.enable = true;
           
           services.pipewire.enable = true;
