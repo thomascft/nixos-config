@@ -15,6 +15,9 @@
     wofi
     obsidian
     microsoft-edge
+    spotify
+    swww
+    mako
   ] ++ [
     inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
   ];
