@@ -56,6 +56,7 @@
             git
             github-cli
             obsidian
+            microsoft-edge
           ] ++ [
             inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
           ];
@@ -85,6 +86,16 @@
 
 
           boot.initrd.systemd.enable = true;
+        })
+        ({...}:{
+          programs.dconf.profiles.user.databases = [{
+            lockAll = true;
+            settings = {
+              "org/gnome/desktop/interface" = {
+                color-scheme = "prefer-dark";
+              };
+            };
+          }];
         })
         ./systems/gram/disko.nix
         ./systems/gram/hardware-configuration.nix
