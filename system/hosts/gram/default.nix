@@ -1,9 +1,11 @@
 {pkgs, ...}:{
   imports = [
+    ../../modules/secure-boot.nix
+    ../../modules/desktop-environment.nix
+    ../../modules/terminal-environment.nix
+
     ./hardware-configuration.nix
     ./disko.nix
-    ./secure-boot.nix
-    ./desktop-environment.nix
   ];
 
   time.timeZone = "America/Denver";
@@ -38,6 +40,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   system.stateVersion = "25.11";
 }
