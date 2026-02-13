@@ -1,9 +1,12 @@
 {pkgs, ...}:{
   environment.systemPackages = with pkgs; [
     helix
-    git
     github-cli
-
     nushell
   ];
+
+  programs.git.enable = true;
+  programs.starship.enable = true;
+
+  users.defaultUserShell = pkgs.nushell;
 }
