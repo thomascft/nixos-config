@@ -12,10 +12,16 @@
   inputs.zen-browser.url = "github:0xc000022070/zen-browser-flake/beta";
   inputs.zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
+  inputs.nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
   outputs = inputs @ {self, nixpkgs, ...}:{
     nixosConfigurations.gram = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs self; };
       modules = [ ./system/hosts/gram ];
+    };
+    nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs self; };
+      modules = [ ./system/hosts/wsl ];
     };
   };
 }

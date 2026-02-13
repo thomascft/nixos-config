@@ -32,16 +32,7 @@
 
   services.syncthing.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    helix
-    git
-    github-cli
-  ];
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "x86_64-linux";
-
   system.stateVersion = "25.11";
 }
 
