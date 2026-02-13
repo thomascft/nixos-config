@@ -1,5 +1,6 @@
 {pkgs, ...}:{
   imports = [
+    ../../modules/base.nix
     ../../modules/secure-boot.nix
     ../../modules/desktop-environment.nix
     ../../modules/terminal-environment.nix
