@@ -31,6 +31,7 @@
   services.upower.enable = true;
 
   services.syncthing.enable = true;
+  services.tailscale.enable = true;
 
   environment.systemPackages = with pkgs; [
     helix
