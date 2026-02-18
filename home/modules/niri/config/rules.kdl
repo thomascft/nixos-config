@@ -1,0 +1,38 @@
+//
+// Rules
+//
+
+// Window Rules
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+	match app-id=r#"^zen$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// Startup Rules
+
+workspace "Main"
+workspace "Obsidian"
+workspace "Code"
+workspace "Spofify"
+
+window-rule {
+	match at-startup=true app-id=r#"^zen$"#
+	open-on-workspace "Main"
+}
+
+window-rule {
+	match at-startup=true app-id=r#"^obsidian$"#
+	open-on-workspace "obsidian"
+}
+
+window-rule {
+	match at-startup=true app-id=r#"^spotify$"#
+	open-on-workspace "spotify"
+}

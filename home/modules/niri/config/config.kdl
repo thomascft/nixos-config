@@ -1,0 +1,24 @@
+include "outputs.kdl"
+include "binds.kdl"
+include "rules.kdl"
+include "appearance.kdl"
+
+input {
+    keyboard {
+        xkb {}
+        numlock
+    }
+    touchpad {
+        tap
+        natural-scroll
+    }
+    mouse {}
+
+	focus-follows-mouse
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+// debug {
+// 	keep-laptop-panel-on-when-lid-is-closed
+// }

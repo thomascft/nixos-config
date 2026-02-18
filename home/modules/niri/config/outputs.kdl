@@ -1,0 +1,15 @@
+//
+// Outputs
+//
+
+// Gram Builtin Monitor
+output "LG Display 0x075B Unknown" {
+	mode "2560x1600"
+	scale 1.0
+}
+
+// Work Monitor
+output "LG Electronics LG HDR 4K 0x0001D796" {
+	mode "3840x2160"
+	scale 1.0
+}
