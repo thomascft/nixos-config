@@ -24,7 +24,14 @@
   };
 
   networking.hostName = "gram";
+  services.resolved.enable = true;
   networking.wireless.iwd.enable = true;
+  networking.wireless.iwd.settings = {
+    General = {
+      EnableNetworkConfiguration = true;
+    };
+  };
+  networking.dhcpcd.enable = false; # We've enabled IWD's builtin DHCP client
   hardware.bluetooth.enable = true;
 
   services.thermald.enable = true;
