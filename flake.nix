@@ -1,6 +1,8 @@
 {
   description = "My home and system configuration.";
 
+  inputs.flake-parts.url = "github:hercules-ci/flake-parts";
+
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
   inputs.disko.url = "github:nix-community/disko";
@@ -17,18 +19,14 @@
   inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-  outputs = inputs @ {self, nixpkgs, home-manager, ...}:{
-    nixosConfigurations.gram = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs self; };
-      modules = [ ./system/hosts/gram ];
-    };
-    nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs self; };
-      modules = [ ./system/hosts/wsl ];
-    };
-    homeConfigurations."thomas@gram" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages."x86_64-linux";
-      modules = [ ./home/profiles/gram ];
-    };
-  };
+  outputs = inputs @ {flake-parts, ...}: flake-parts.lib.mkFlake { inherit inputs; } ( top @ { config, withSystem, moduleWithSystem, ...}:{
+    imports = [
+      ./modules
+      ./hosts
+    ];
+
+    systems = [
+      "x86_64-linux"
+    ];
+  });
 }
