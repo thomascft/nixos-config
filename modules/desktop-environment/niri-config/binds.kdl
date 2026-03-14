@@ -6,7 +6,6 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Return hotkey-overlay-title="Open a Terminal: Ghostty" { spawn "ghostty"; }
-    // Mod+Space hotkey-overlay-title="Run an Application: Sherlock" { spawn "sherlock" "--show" "drun"; }
     Mod+Space hotkey-overlay-title="Run an Application: Sherlock" { spawn "wofi" "--show" "drun"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
