@@ -41,7 +41,6 @@
         services.power-profiles-daemon.enable = true;
         services.upower.enable = true;
 
-        services.syncthing.enable = true;
         services.tailscale.enable = true;
       })
       ({ pkgs, ...}:{
@@ -68,6 +67,8 @@
         home.stateVersion = "26.05";
 
         programs.home-manager.enable = true;
+
+        services.syncthing.enable = true;
 
         nixpkgs.config.allowUnfree = true;
       }
