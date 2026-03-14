@@ -53,6 +53,16 @@
         nix.settings.experimental-features = [ "nix-command" "flakes" ];
         nixpkgs.config.allowUnfree = true;
       })
+      # Graphics
+      ({
+        hardware.graphics.enable = true;
+        hardware.nvidia.open = true;
+        hardware.nvidia.prime = {
+          offload.enable = true;
+          intelBusId = "PCI:0@0:2:0";
+          nvidiaBusId = "PCI:1@0:0:0";
+        };
+      })
     ];
   };
   flake.homeConfigurations."thomas@gram" = inputs.home-manager.lib.homeManagerConfiguration {
